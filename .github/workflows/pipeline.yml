@@ -33,10 +33,10 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: env-file
-        path: ~/.env
+        path: .env
     - uses: actions/checkout@v3
     - name: Generate deploment package
-      run: zip -r deploy.zip . -x '*.git*' ~/.env
+      run: zip -r deploy.zip . -x '*.git*' .env
     - name: Upload deployment package
       uses: actions/upload-artifact@v3
       with:
