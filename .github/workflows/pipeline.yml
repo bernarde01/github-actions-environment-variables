@@ -21,6 +21,8 @@ jobs:
       run: echo "Some text" > .env
     - name: Print .env file contents
       run: cat .env
+    - name: Wait for .env file
+      run: sleep 2
     - name: Upload .env file
       uses: actions/upload-artifact@v3
       with:
