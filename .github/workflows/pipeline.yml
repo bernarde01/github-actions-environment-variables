@@ -27,7 +27,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: env-file
-        path: .env
+        path: ${{ github.workspace }}/.env
     - uses: actions/checkout@v3
     - name: Generate deploment package
       run: zip -r deploy.zip . -x '*.git*' .env
