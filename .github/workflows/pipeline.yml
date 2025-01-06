@@ -15,8 +15,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Print name
-      run: echo "Hello $NAME"
     - name: Env file
       run: echo "$ENV_FILE_CONTENTS" > .env
+    - uses: actions/checkout@v3
+    - name: Generate deploment package
+      run: zip -r deploy.zip . -x '*.git*' .env
+    - name: Upload deployment package
+      uses: actions/upload-artifact@v2
+      with:
+        name: deploy-package
+        path: deploy.zip
