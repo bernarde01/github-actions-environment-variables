@@ -26,29 +26,20 @@ jobs:
         name: my-artifacts
         path: ~/new/**/*
     - name: Env file
-      run: echo "Some text!" > ~.env
+      run: echo "Some text!" > ~/.env
     - name: Print .env file contents
-      run: cat ~.env
+      run: cat ~/.env
     - name: Upload .env file
       uses: actions/upload-artifact@v4
       with:
         name: env-file
-        path: ~.env
+        path: ~/.env
     - uses: actions/checkout@v3
     - name: Generate deploment package
-      run: zip -r deploy.zip . -x '*.git*' .env
+      run: zip -r deploy.zip . -x '*.git*' ~/.env
     - name: Upload deployment package
       uses: actions/upload-artifact@v3
       with:
         name: deploy-package
         path: deploy.zip
-    - name: Create file
-      run: | 
-        touch ${{ github.workspace }}/.env2 
-        echo "Some text for env2" >> ${{ github.workspace }}/.env2
-        cat ${{ github.workspace }}/.env2
-    - name: Upload env2
-      uses: actions/upload-artifact@v4
-      with:
-        name: env2-package
-        path: ${{ github.workspace }}/.env2
+    
