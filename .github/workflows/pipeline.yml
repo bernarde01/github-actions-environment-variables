@@ -16,29 +16,14 @@ jobs:
 
     steps:
     - name: Print env variables
-      run: echo "Env variables $ENV_FILE_CONTENTS"
-    - name: Env file 0
-      run: |
-        mkdir -p ~/new/artifact
-        echo "Some text!!" > ~/new/artifact/env
-    - uses: actions/upload-artifact@v4
-      with:
-        name: my-artifacts
-        path: ~/new/**/*
-    - name: View files 00
-      run: ls -a .    
+      run: echo "Env variables $ENV_FILE_CONTENTS" 
     - uses: actions/checkout@v3
     - name: View files
       run: ls -a .
     - name: Env file
-      run: echo $ENV_FILE_CONTENTS > env2
+      run: echo $ENV_FILE_CONTENTS > .env
     - name: View files 0
       run: ls -a .
-    - name: Upload .env file
-      uses: actions/upload-artifact@v4
-      with:
-        name: env-file
-        path: env2
     - name: Generate deploment package
       run: zip -r deploy.zip . -x '*.git*'
     - name: Upload deployment package
@@ -46,18 +31,5 @@ jobs:
       with:
         name: deploy-package
         path: deploy.zip
-    - name: Env file
-      run: echo "Some text BE1" > ${{ github.workspace }}/.env
-    - name: Print .env file contents
-      run: cat ${{ github.workspace }}/.env
-    - name: Find .env file
-      id: find_env
-      run: |
-        env_file=$(find ${{ github.workspace }} -name ".env" -type f)
-        echo "::set-output name=env_file::$env_file"
-    - name: Upload .env file
-      uses: actions/upload-artifact@v3
-      with:
-        name: env-file
-        path: ${{ steps.find_env.outputs.env_file }}
+
     
