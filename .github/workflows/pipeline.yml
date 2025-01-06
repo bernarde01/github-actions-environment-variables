@@ -18,7 +18,7 @@ jobs:
     - name: Print env variables
       run: echo "Env variables $ENV_FILE_CONTENTS"
     - name: Env file 0
-    - run: |
+      run: |
         mkdir -p ~/new/artifact
         echo hello > ~/new/artifact/world.txt
     - uses: actions/upload-artifact@v4
