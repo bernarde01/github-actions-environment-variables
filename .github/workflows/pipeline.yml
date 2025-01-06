@@ -26,17 +26,19 @@ jobs:
         name: my-artifacts
         path: ~/new/**/*
     - name: Env file
-      run: echo "Some text!" > ~.env
+      run: echo "Some text!" > env2
     - name: Print .env file contents
-      run: cat ~.env
+      run: cat env2
     - name: Upload .env file
       uses: actions/upload-artifact@v4
       with:
         name: env-file
-        path: ~.env
+        path: env2
     - uses: actions/checkout@v3
+    - name: View files
+      run: ls -a .
     - name: Generate deploment package
-      run: zip -r deploy.zip . -x '*.git*' ~.env
+      run: zip -r deploy.zip . -x '*.git*'
     - name: Upload deployment package
       uses: actions/upload-artifact@v3
       with:
