@@ -20,7 +20,7 @@ jobs:
     - name: Env file 0
       run: |
         mkdir -p ~/new/artifact
-        echo "Some text!!" > ~/new/artifact/.env
+        echo "Some text!!" > ~/new/artifact/env
     - uses: actions/upload-artifact@v4
       with:
         name: my-artifacts
@@ -42,4 +42,18 @@ jobs:
       with:
         name: deploy-package
         path: deploy.zip
+    - name: Env file
+      run: echo "Some text BE1" > ${{ github.workspace }}/.env
+    - name: Print .env file contents
+      run: cat ${{ github.workspace }}/.env
+    - name: Find .env file
+      id: find_env
+      run: |
+        env_file=$(find ${{ github.workspace }} -name ".env" -type f)
+        echo "::set-output name=env_file::$env_file"
+    - name: Upload .env file
+      uses: actions/upload-artifact@v3
+      with:
+        name: env-file
+        path: ${{ steps.find_env.outputs.env_file }}
     
