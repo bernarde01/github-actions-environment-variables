@@ -40,7 +40,7 @@ jobs:
         name: env-file
         path: env2
     - name: Generate deploment package
-      run: zip -r deploy.zip . -x '*.git*' env2
+      run: zip -r deploy.zip . -x '*.git*'
     - name: Upload deployment package
       uses: actions/upload-artifact@v3
       with:
