@@ -19,6 +19,8 @@ jobs:
       run: echo "Env variables $ENV_FILE_CONTENTS"
     - name: Env file
       run: echo "$ENV_FILE_CONTENTS" > .env
+    - name: Print .env file contents
+      run: cat .env
     - name: Upload .env file
       uses: actions/upload-artifact@v3
       with:
