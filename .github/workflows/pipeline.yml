@@ -31,7 +31,7 @@ jobs:
     - name: View files
       run: ls -a .
     - name: Env file
-      run: echo "Some text!" > env2
+      run: echo $ENV_FILE_CONTENTS > env2
     - name: View files 0
       run: ls -a .
     - name: Upload .env file
