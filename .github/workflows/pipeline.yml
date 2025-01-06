@@ -18,9 +18,9 @@ jobs:
     - name: Print env variables
       run: echo "Env variables $ENV_FILE_CONTENTS"
     - name: Env file
-      run: echo "Some text" > .env
+      run: echo "Some text!" > ${{ github.workspace }}/.env
     - name: Print .env file contents
-      run: cat .env
+      run: cat ${{ github.workspace }}/.env
     - name: Wait for .env file
       run: sleep 2
     - name: Upload .env file
