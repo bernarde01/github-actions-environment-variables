@@ -17,6 +17,11 @@ jobs:
     steps:
     - name: Env file
       run: echo "$ENV_FILE_CONTENTS" > .env
+    - name: Upload .env file
+      uses: actions/upload-artifact@v3
+      with:
+        name: env-file
+        path: .env
     - uses: actions/checkout@v3
     - name: Generate deploment package
       run: zip -r deploy.zip . -x '*.git*' .env
