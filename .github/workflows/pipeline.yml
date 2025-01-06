@@ -25,10 +25,14 @@ jobs:
       with:
         name: my-artifacts
         path: ~/new/**/*
+    - name: View files 00
+      run: ls -a .
     - name: Env file
       run: echo "Some text!" > env2
     - name: Print .env file contents
       run: cat env2
+    - name: View files 0
+      run: ls -a .
     - name: Upload .env file
       uses: actions/upload-artifact@v4
       with:
