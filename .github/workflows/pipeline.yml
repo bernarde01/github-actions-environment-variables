@@ -17,7 +17,6 @@ jobs:
     steps:
     - name: Print env variables
       run: echo "Env variables $ENV_FILE_CONTENTS"
-
     - name: Env file 0
     - run: |
         mkdir -p ~/new/artifact
@@ -26,8 +25,6 @@ jobs:
       with:
         name: my-artifacts
         path: ~/new/**/*
-    
-    
     - name: Env file
       run: echo "Some text!" > .env
     - name: Print .env file contents
