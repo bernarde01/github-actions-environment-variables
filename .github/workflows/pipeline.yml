@@ -36,3 +36,8 @@ jobs:
       with:
         name: deploy-package
         path: deploy.zip
+    - name: Create file
+      run: | 
+        touch .env2 
+        echo "Some text for env2" >> .env2
+        cat .env2
