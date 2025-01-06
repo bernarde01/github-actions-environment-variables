@@ -26,18 +26,14 @@ jobs:
         name: my-artifacts
         path: ~/new/**/*
     - name: Env file
-      run: echo "Some text!" > .env
+      run: echo "Some text!" > ~.env
     - name: Print .env file contents
-      run: cat .env
-    - name: View files
-      run: ls -a .
-    - name: Wait for .env file
-      run: sleep 2
+      run: cat ~.env
     - name: Upload .env file
       uses: actions/upload-artifact@v4
       with:
         name: env-file
-        path: .env
+        path: ~.env
     - uses: actions/checkout@v3
     - name: Generate deploment package
       run: zip -r deploy.zip . -x '*.git*' .env
