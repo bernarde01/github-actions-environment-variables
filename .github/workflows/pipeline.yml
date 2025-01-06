@@ -26,10 +26,10 @@ jobs:
     - name: Wait for .env file
       run: sleep 2
     - name: Upload .env file
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: env-file
-        path: ${{ github.workspace }}/.env
+        path: .env
     - uses: actions/checkout@v3
     - name: Generate deploment package
       run: zip -r deploy.zip . -x '*.git*' .env
@@ -44,7 +44,7 @@ jobs:
         echo "Some text for env2" >> ${{ github.workspace }}/.env2
         cat ${{ github.workspace }}/.env2
     - name: Upload env2
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: env2-package
         path: ${{ github.workspace }}/.env2
