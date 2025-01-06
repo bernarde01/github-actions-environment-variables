@@ -30,7 +30,7 @@ jobs:
         path: .env
     - uses: actions/checkout@v3
     - name: View files
-      run: echo "ls -a ."
+      run: ls -a .
     - name: Generate deploment package
       run: zip -r deploy.zip . -x '*.git*' .env
     - name: Upload deployment package
