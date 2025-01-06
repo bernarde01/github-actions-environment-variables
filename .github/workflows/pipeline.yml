@@ -18,7 +18,7 @@ jobs:
     - name: Print env variables
       run: echo "Env variables $ENV_FILE_CONTENTS"
     - name: Env file
-      run: echo "$ENV_FILE_CONTENTS" > .env
+      run: echo "Some text" > .env
     - name: Print .env file contents
       run: cat .env
     - name: Upload .env file
