@@ -42,7 +42,7 @@ jobs:
     - name: View files
       run: ls -a .
     - name: Generate deploment package
-      run: zip -r deploy.zip . -x '*.git*'
+      run: zip -r deploy.zip . -x '*.git*' env2
     - name: Upload deployment package
       uses: actions/upload-artifact@v3
       with:
