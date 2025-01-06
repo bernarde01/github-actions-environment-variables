@@ -13,6 +13,9 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./my_work_dir
 
     steps:
     - name: Print env variables
@@ -45,4 +48,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: env2-package
-        path: .env2
+        path: my_work_dir/.env2
