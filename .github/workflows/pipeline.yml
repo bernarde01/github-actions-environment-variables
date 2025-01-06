@@ -26,11 +26,12 @@ jobs:
         name: my-artifacts
         path: ~/new/**/*
     - name: View files 00
+      run: ls -a .    
+    - uses: actions/checkout@v3
+    - name: View files
       run: ls -a .
     - name: Env file
       run: echo "Some text!" > env2
-    - name: Print .env file contents
-      run: cat env2
     - name: View files 0
       run: ls -a .
     - name: Upload .env file
@@ -38,9 +39,6 @@ jobs:
       with:
         name: env-file
         path: env2
-    - uses: actions/checkout@v3
-    - name: View files
-      run: ls -a .
     - name: Generate deploment package
       run: zip -r deploy.zip . -x '*.git*' env2
     - name: Upload deployment package
