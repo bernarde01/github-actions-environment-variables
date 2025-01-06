@@ -20,7 +20,7 @@ jobs:
     - name: Env file 0
       run: |
         mkdir -p ~/new/artifact
-        echo hello > ~/new/artifact/world.txt
+        echo "Some text!!" > ~/new/artifact/.env
     - uses: actions/upload-artifact@v4
       with:
         name: my-artifacts
